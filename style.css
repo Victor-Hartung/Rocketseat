@@ -37,7 +37,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: auto; /* não se aplica em cima, por uma regra do css.*/
   /* usar  " margin-left: auto ", e " margin-right: auto ", tambem funciona, caso queira aplicar em apenas um lugar*/
   margin-top: 56px;
