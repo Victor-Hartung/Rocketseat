@@ -29,6 +29,7 @@ body {
   background-repeat: no-repeat;
   background-position: top center; /* posiciona o bjeto no centro pegando pelo topo*/
   background-size: cover; /* faz a imagem cobiri o fundo todo */
+  height: 100vh; /* esse "100vh" significa " 100% viewport height ", altura total do que é visivel na tela*/
 }
 
 body * {
@@ -153,4 +154,13 @@ footer {
   padding: 24px;
   text-align: center;
   font-size: 14px;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+  .light {
+    --gb-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
