@@ -11,7 +11,7 @@
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./moon-stars.svg);
+  --switch-bg-url: url(./assets/moon-stars.svg);
 }
 
 .light {
@@ -21,7 +21,7 @@
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.2);
   --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(./sun.svg);
+  --switch-bg-url: url(./assets/sun.svg);
 }
 
 body {
@@ -33,16 +33,15 @@ body {
 }
 
 body * {
-  font-family: "Inter", serif;
+  font-family: "Inter", sans-serif;
   color: var(--text-color);
 }
 
 #container {
   width: 100%;
   max-width: 588px;
-  margin: auto; /* não se aplica em cima, por uma regra do css.*/
+  margin: 56px auto 0px; /* não se aplica em cima, por uma regra do css.*/
   /* usar  " margin-left: auto ", e " margin-right: auto ", tambem funciona, caso queira aplicar em apenas um lugar*/
-  margin-top: 56px;
   padding: 0 24px;
 }
 
@@ -53,10 +52,7 @@ body * {
 }
 
 #profile img {
-  display: block; /*imagem é um elemento inline, entao para usar o margin auto e deixar centralizado,
-  precisamos primeiro transforma-lo em " block ". */
   width: 112px;
-  margin: auto;
 }
 
 #profile p {
@@ -68,7 +64,7 @@ body * {
 #switch {
   position: relative;
   width: 64px;
-  margin: 8px auto;
+  margin: 4px auto;
 }
 
 #switch button {
@@ -78,15 +74,21 @@ body * {
   border: 0;
   border-radius: 50%;
   position: absolute;
-  z-index: 1;
-  left: 0;
   top: 50%;
+  left: 0;
+  z-index: 1;
   transform: translateY(-50%);
+
+  animation: deslizar-direita 0.2s forwards;
+  transition: 0.3s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: desliar-esquerda 0.2s forwards;
+}
+
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);;
 }
 
 #switch span {
@@ -156,11 +158,31 @@ footer {
   font-size: 14px;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 700px) { /* muda o background conforme o tamanho da tela muda, para pc e celular. arrumando a responsividade*/
   :root {
     --bg-url: url(./assets/bg-desktop.jpg);
   }
   .light {
-    --gb-url: url(./assets/bg-desktop-light.jpg);
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animações do botao que altera o modo noturno */
+@keyframes desliar-esquerda{
+  from{
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
+
+}
+
+@keyframes deslizar-direita{
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
   }
 }
